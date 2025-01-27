@@ -1,8 +1,1 @@
-libc6
-libgcc-9-dev
-libstdc++-9-dev
-libxrender1
-libsm6
-libxext6
-python3-dev
-build-essential
+rdkit
