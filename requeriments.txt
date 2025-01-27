@@ -1,10 +1,2 @@
-libc6
-libgcc-9-dev
-libstdc++-9-dev
-libxrender1
-libsm6
-libxext6
-python3-dev
-build-essential
 streamlit
 https://github.com/rdkit/rdkit-pypi/releases/download/2022.09.1/rdkit-2022.9.1-cp39-cp39-manylinux2014_x86_64.whl
