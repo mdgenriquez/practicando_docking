@@ -1,16 +1,18 @@
-# Usa una imagen base con RDKit preinstalado
-FROM rdkit/rdkit:latest
+FROM python:3.8-slim
 
-# Instala Python y Streamlit
-RUN apt-get update && apt-get install -y python3 python3-pip
-RUN pip3 install --no-cache-dir streamlit pandas requests
+# Instala dependencias del sistema operativo
+RUN apt-get update && apt-get install -y \
+    libxrender1 libsm6 libxext6 \
+    python3-dev python3-pip && \
+    rm -rf /var/lib/apt/lists/*
 
-# Copia el código de la app al contenedor
+# Instala RDKit y dependencias de Python
+RUN pip install --no-cache-dir rdkit-pypi streamlit pandas requests
+
+# Copia los archivos de la aplicación
 WORKDIR /app
 COPY . /app
 
-# Expone el puerto para Streamlit
+# Expone el puerto y ejecuta la aplicación
 EXPOSE 8501
-
-# Comando para ejecutar la aplicación
 CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
